@@ -20,13 +20,16 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 
 import com.onegravity.rteditor.utils.io.FilenameUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.SortedSet;
@@ -37,11 +40,28 @@ import java.util.TreeMap;
  */
 public class FontManager {
 
-    private static final String[] FONT_DIRS = {"/system/fonts", "/system/font", "/data/fonts"};
+    private static final List<String> FONT_DIRS = new ArrayList<>(
+            Arrays.asList("/system/fonts", "/system/font", "/data/fonts"));
 
     private static final Map<String, String> ASSET_FONTS_BY_NAME = new TreeMap<String, String>();
     private static final Map<String, String> SYSTEM_FONTS_BY_PATH = new TreeMap<String, String>();
     private static final Map<String, String> SYSTEM_FONTS_BY_NAME = new TreeMap<String, String>();
+
+
+    /**
+     * Adding a directory to look for fonts in. To be called before any other usage of RTEditor
+     * or its components.
+     *
+     * @param fontDir A font directory to add.
+     * @return true, if the directory was added, false if it was already in the list of font directories;
+     */
+    public static boolean addFontDir(@NonNull final String fontDir) {
+        final boolean alreadyThere = FONT_DIRS.contains(fontDir);
+        if (!alreadyThere) {
+            FONT_DIRS.add(fontDir);
+        }
+        return !alreadyThere;
+    }
 
     /*
      * Don't load the same font more than once -> cache them here.

@@ -91,5 +91,5 @@ android {
 
 dependencies {
     debugApi project(':RTEditor-Toolbar')
-    releaseApi "com.1gravity:android-rteditor:$lib_version"
+    releaseApi "com.github.denys-dolganenko:Android-RTEditor:api_extension-SNAPSHOT"
 }

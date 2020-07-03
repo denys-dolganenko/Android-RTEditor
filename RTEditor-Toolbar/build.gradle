@@ -48,7 +48,7 @@ dependencies {
     api 'com.1gravity:android-colorpicker:2.0.3'
 
     debugApi project(':RTEditor')
-    releaseApi "com.1gravity:android-rteditor-core:$lib_version"
+    releaseApi "com.github.denys-dolganenko:Android-RTEditor:api_extension-SNAPSHOT"
 }
 
 apply from: '../android-artifacts.gradle'

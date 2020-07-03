@@ -28,6 +28,7 @@ public class RTApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        FontManager.addFontDir(getExternalFilesDir(null) + "/fonts");
         FontManager.preLoadFonts(this);
     }
 

@@ -20,7 +20,6 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.support.annotation.AttrRes;
 import android.util.AndroidRuntimeException;
 import android.widget.Toast;
 
@@ -29,6 +28,8 @@ import com.onegravity.rteditor.api.media.RTAudio;
 import com.onegravity.rteditor.api.media.RTImage;
 import com.onegravity.rteditor.api.media.RTMediaSource;
 import com.onegravity.rteditor.api.media.RTVideo;
+
+import androidx.annotation.AttrRes;
 
 /**
  * The RTApi is a convenience class that combines the RTProxy and the

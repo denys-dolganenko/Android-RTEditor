@@ -451,11 +451,8 @@ public class RTManager implements RTToolbarListener, RTEditTextListener {
 
     @Override
     /* @inheritDoc */
-    public void onResetUndoAndRedo() {
-        RTEditText editor = getActiveEditor();
-        if (editor != null) {
-            mOPManager.resetUndoAndRedo(editor);
-        }
+    public void onResetUndoAndRedo(RTEditText rtEditText) {
+        mOPManager.resetUndoAndRedo(rtEditText);
     }
 
     @Override

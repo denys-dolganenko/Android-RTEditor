@@ -35,7 +35,7 @@ public interface RTToolbarListener {
 
     void onRedo();
 
-    void onResetUndoAndRedo();
+    void onResetUndoAndRedo(RTEditText rtEditText);
 
     void onClearFormatting();
 

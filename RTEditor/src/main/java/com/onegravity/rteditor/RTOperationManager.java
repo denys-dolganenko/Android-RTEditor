@@ -132,6 +132,15 @@ class RTOperationManager {
     }
 
     /**
+     * Check whether the Undo operation is available for a specific rich text editor.
+     *
+     * @param editor The rich text editor to check for.
+     */
+    synchronized boolean isUndoAvailable(RTEditText editor) {
+        return !getUndoStack(editor).empty();
+    }
+
+    /**
      * Undo the last operation for a specific rich text editor
      *
      * @param editor Undo the last operation for this rich text editor
@@ -152,6 +161,15 @@ class RTOperationManager {
     }
 
     /**
+     * Check whether the Redo operation is available for a specific rich text editor.
+     *
+     * @param editor The rich text editor to check for.
+     */
+    synchronized boolean isUReoAvailable(RTEditText editor) {
+        return !getRedoStack(editor).empty();
+    }
+
+    /**
      * Re-do the last undone operation for a specific rich text editor
      *
      * @param editor Re-do an operation for this rich text editor
@@ -169,6 +187,17 @@ class RTOperationManager {
                 op.redo(editor);
             }
         }
+    }
+
+    /**
+     * Clear the Undo and Redo stacks for a specific rich text editor (to have a "clean initial state"
+     * on that editor).
+     *
+     * @param editor A rich text editor to operate on.
+     */
+    synchronized void resetUndoAndRedo(RTEditText editor) {
+        getUndoStack(editor).clear();
+        getRedoStack(editor).clear();
     }
 
     /**

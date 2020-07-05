@@ -407,6 +407,19 @@ public class RTManager implements RTToolbarListener, RTEditTextListener {
 
     @Override
     /* @inheritDoc */
+    public boolean isUndoAvailable() {
+        final RTEditText editor = getActiveEditor();
+        final boolean isUndoAvailable;
+        if (editor != null) {
+            isUndoAvailable = mOPManager.isUndoAvailable(editor);
+        } else {
+            isUndoAvailable = false;
+        }
+        return isUndoAvailable;
+    }
+
+    @Override
+    /* @inheritDoc */
     public void onUndo() {
         RTEditText editor = getActiveEditor();
         if (editor != null) {
@@ -416,10 +429,32 @@ public class RTManager implements RTToolbarListener, RTEditTextListener {
 
     @Override
     /* @inheritDoc */
+    public boolean isRedoAvailable() {
+        final RTEditText editor = getActiveEditor();
+        final boolean isRedoAvailable;
+        if (editor != null) {
+            isRedoAvailable = mOPManager.isUReoAvailable(editor);
+        } else {
+            isRedoAvailable = false;
+        }
+        return isRedoAvailable;
+    }
+
+    @Override
+    /* @inheritDoc */
     public void onRedo() {
         RTEditText editor = getActiveEditor();
         if (editor != null) {
             mOPManager.redo(editor);
+        }
+    }
+
+    @Override
+    /* @inheritDoc */
+    public void onResetUndoAndRedo() {
+        RTEditText editor = getActiveEditor();
+        if (editor != null) {
+            mOPManager.resetUndoAndRedo(editor);
         }
     }
 
@@ -641,8 +676,7 @@ public class RTManager implements RTToolbarListener, RTEditTextListener {
             // fonts
             if (typefaces != null && typefaces.size() == 1) {
                 toolbar.setFont(typefaces.get(0));
-            }
-            else {
+            } else {
                 toolbar.setFont(null);
             }
 

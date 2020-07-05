@@ -27,9 +27,15 @@ public interface RTToolbarListener {
 
     <V, C extends RTSpan<V>> void onEffectSelected(Effect<V, C> effect, V value);
 
+    boolean isUndoAvailable();
+
     void onUndo();
 
+    boolean isRedoAvailable();
+
     void onRedo();
+
+    void onResetUndoAndRedo();
 
     void onClearFormatting();
 
